@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class SecondPlayerController : MonoBehaviour
 {
     private float speed = 20.0f;
     private float turnSpeed = 45.0f;
@@ -22,27 +22,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal2");
+        forwardInput = Input.GetAxis("Vertical2");
         //Двигаем автомобиль по вертикальной оси
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
         //Двигаем автомобиль по горизонтальной оси
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             speed = 30.0f;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        if (Input.GetKeyUp(KeyCode.RightShift))
         {
             speed = 20.0f;
-        }
-        
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            if (mainCamera.active == false) mainCamera.SetActive(true);
-            else mainCamera.SetActive(false);
         }
     }
 }
